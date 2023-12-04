@@ -1,0 +1,4 @@
+
+hcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(”ÑÙç8ÀÇ•®√1
+icsharpsquid:S2223"EChange the visibility of 'Instance' or make it 'const' or 'readonly'.(”ÑÙç8ÀÇ•®√1
+ycsharpsquid:S2696"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(ƒì±œ8ÃÇ•®√1
