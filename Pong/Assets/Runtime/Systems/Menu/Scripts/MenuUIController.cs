@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.SceneManagement;
+using Runtime.Systems.GeneralManager.Scripts;
 
 namespace Runtime.Systems.Menu.Scripts
 {
     public class MenuUIController : MonoBehaviour
     {
-        public void GoSceneAsync(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
-
-        public void GoSceneNoAsync(string sceneName) => SceneManager.LoadScene(sceneName);
+        public void StartGame(int numberScene) => SceneController.Instance.NextLevel(numberScene);
 
         public void ExitGame()
         {
