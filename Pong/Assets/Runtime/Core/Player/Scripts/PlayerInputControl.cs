@@ -29,8 +29,9 @@ namespace Runtime.Core.Player.Scripts
             position.x = startPositionX;
             position.z = playerGameObject.transform.position.z;
             playerGameObject.transform.position = position;
-            
+#if UNITY_EDITOR
             Debug.Log(position);
+#endif
         }
     }
 }
