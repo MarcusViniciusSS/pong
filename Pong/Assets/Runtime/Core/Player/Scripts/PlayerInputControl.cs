@@ -12,11 +12,15 @@ namespace Runtime.Core.Player.Scripts
         private InputAction _touchPositionAction;
         private Camera _camera;
 
+        private PlayerController _playerController;
+
         private void Awake()
         {
             _camera = Camera.main;
             _playerInput = GetComponent<PlayerInput>();
             _touchPositionAction = _playerInput.actions["MovementTouchPosition"];
+
+            _playerController = new PlayerController(playerGameObject, _camera);
         }
 
         private void OnEnable() => _touchPositionAction.performed += TouchPosition;
@@ -24,14 +28,9 @@ namespace Runtime.Core.Player.Scripts
         private void OnDisable() => _touchPositionAction.performed -= TouchPosition;
 
         private void TouchPosition(InputAction.CallbackContext context)
-        {
-            var position = _camera!.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
-            position.x = startPositionX;
-            position.z = playerGameObject.transform.position.z;
-            playerGameObject.transform.position = position;
-#if UNITY_EDITOR
-            Debug.Log(position);
-#endif
+        { 
+            var valueTouchPosition = _touchPositionAction.ReadValue<Vector2>();
+            _playerController.MovementTouch(valueTouchPosition, startPositionX);
         }
     }
 }

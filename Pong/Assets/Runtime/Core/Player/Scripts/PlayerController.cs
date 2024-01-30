@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Runtime.Core.Player.Scripts
 {
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController
     {
-        
-    }
+        private readonly GameObject _playerGameObject;
+        private readonly Camera _camera;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public PlayerController(GameObject playerGameObject, Camera camera)
+        {
+            _playerGameObject = playerGameObject;
+            _camera = camera;
+        }
         
+        public void MovementTouch(Vector2 touchValue, float startPositionX)
+        {
+            var position = _camera!.ScreenToWorldPoint(touchValue);
+            position.x = startPositionX;
+            position.z = _playerGameObject.transform.position.z;
+            _playerGameObject.transform.position = position;
+        }
     }
 }
