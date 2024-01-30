@@ -2,37 +2,28 @@
     "name": "PlayerControl",
     "maps": [
         {
-            "name": "Player",
+            "name": "Touch",
             "id": "808826a0-677c-4e72-9307-236959404b43",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "PassThrough",
+                    "name": "MovementTouchPosition",
+                    "type": "Value",
                     "id": "073aa99a-f1a9-43db-8878-4a5ac9939599",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ScreenPosition",
-                    "type": "PassThrough",
-                    "id": "3d221351-60f2-4659-93ba-2520c9e47023",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "0faf0ffc-b1e9-4f86-ae6e-2133134f3001",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "Hold",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Touchscreen",
-                    "action": "Movement",
+                    "action": "MovementTouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,29 +34,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6409e9c1-5ed2-47bf-8f9b-915cdbd84e1a",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touchscreen",
-                    "action": "ScreenPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "46723021-5660-4b52-9d82-4b4da1609a91",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse",
-                    "action": "ScreenPosition",
+                    "action": "MovementTouchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

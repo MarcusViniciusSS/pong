@@ -1,20 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
-public class PlayerInputControl : MonoBehaviour
+namespace Runtime.Core.Player.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerInputControl : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private GameObject playerGameObject;
+        [SerializeField] private float startPositionX = -7.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private PlayerInput _playerInput;
+        private InputAction _touchPositionAction;
+        private Camera _camera;
+
+        private void Awake()
+        {
+            _camera = Camera.main;
+            _playerInput = GetComponent<PlayerInput>();
+            _touchPositionAction = _playerInput.actions["MovementTouchPosition"];
+        }
+
+        private void OnEnable() => _touchPositionAction.performed += TouchPosition;
+
+        private void OnDisable() => _touchPositionAction.performed -= TouchPosition;
+
+        private void TouchPosition(InputAction.CallbackContext context)
+        {
+            var position = _camera!.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
+            position.x = startPositionX;
+            position.z = playerGameObject.transform.position.z;
+            playerGameObject.transform.position = position;
+            
+            Debug.Log(position);
+        }
     }
 }
